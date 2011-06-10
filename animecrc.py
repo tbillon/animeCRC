@@ -83,7 +83,7 @@ try:
         if os.path.isdir(arg):
             for f in get_next_file(arg):
                 check_file(f)
-        elif arg.endswith('sfv'):
+        elif arg.lower().endswith('.sfv'):
             check_sfv(arg)
         else:
             check_file(arg)
