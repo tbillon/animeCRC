@@ -78,6 +78,16 @@ def check_sfv(fname):
             check_file(os.path.join(p, n), int(c, 16))
     f.close()
 
+def check_sfv(fname):
+    p = os.path.dirname(fname)
+    f = open(fname, 'r')
+    for line in f:
+        m = re.search('^([^#]*)\s+([A-F0-9]{8})$', line, re.IGNORECASE)
+        if m is not None:
+            n, c = m.group(1, 2)
+            check_file(os.path.join(p, n), int(c, 16))
+    f.close()
+
 
 if len(sys.argv) < 2:
     print 'Usage: %s [DIR | FILE]' % sys.argv[0]
